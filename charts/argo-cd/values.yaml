@@ -1,0 +1,122 @@
+argo-cd:
+  global:
+    image:
+      tag: v1.8.7
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+  installCRDs: false
+  configs:
+    secret:
+# sgaddam@T0487 argoproj % export ARGO_PWD=admin
+# sgaddam@T0487 argoproj % htpasswd -nbBC 10 "" $ARGO_PWD | tr -d ':\n' | sed 's/$2y/$2a/'
+      argocdServerAdminPassword: '$2a$10$5X93MK/GdXQ6/TnpHj/lSesM.b6GOx1kF.dc02it8bQgvjigHfLRG'
+      createSecret: true
+      githubSecret: super-duper
+  controller:
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - argocd-application-controller
+          topologyKey: "kubernetes.io/hostname"
+    enableStatefulSet: false
+    metrics:
+      enabled: false
+    replicas: 1
+    # resources: ~
+  repoServer:
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - argocd-repo-server
+          topologyKey: "kubernetes.io/hostname"
+    autoscaling:
+      enabled: true
+      minReplicas: 1
+      maxReplicas: 1
+      targetCPUUtilizationPercentage: 50
+      targetMemoryUtilizationPercentage: 50
+    metrics:
+      enabled: false
+    # resources: ~
+  server:
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - argocd-server
+          topologyKey: "kubernetes.io/hostname"
+    autoscaling:
+      enabled: true
+      minReplicas: 1
+      maxReplicas: 1
+      targetCPUUtilizationPercentage: 50
+      targetMemoryUtilizationPercentage: 50
+    ingress:
+      enabled: false
+      https: false
+    ingressGrpc:
+      enabled: false
+    metrics:
+      enabled: false
+    # resources: ~
+  dex:
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - argocd-dex
+          topologyKey: "kubernetes.io/hostname"
+    enabled: false
+    image:
+      tag: v2.28.0
+    metrics:
+      enabled: false
+  redis:
+    # affinity:
+    #   podAntiAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #     - labelSelector:
+    #         matchExpressions:
+    #         - key: app.kubernetes.io/name
+    #           operator: In
+    #           values:
+    #           - argocd-redis
+    enabled: true
+    image:
+      tag: 6.2.1-buster
+    metrics:
+      enabled: false
+  redis-ha:
+    enabled: true
+    exporter:
+      enabled: false
+    persistentVolume:
+      enabled: false
+    haproxy:
+      enabled: true
+      metrics:
+        enabled: false
+      replicas: 1
+    image:
+      tag: 6.2.1-buster
+    replicas: 1
