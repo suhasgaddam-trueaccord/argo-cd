@@ -119,4 +119,4 @@ argo-cd:
       replicas: 1
     image:
       tag: 6.2.1-buster
-    replicas: 1
+    replicas: 2
