@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: proof-of-concept
+  namespace: proof-of-concept
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Argo CD
+  destinations:
+  - namespace: proof-of-concept
+    server: https://kubernetes.default.svc
+  orphanedResources:
+    warn: true

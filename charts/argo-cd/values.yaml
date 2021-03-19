@@ -76,6 +76,9 @@ argo-cd:
         - type: helm
           url: https://dandydeveloper.github.io/charts
           name: dandydeveloper
+        - type: helm
+          url: https://charts.bitnami.com/bitnami
+          name: bitnami
         - type: git
           url: https://github.com/suhasgaddam-trueaccord/argo-cd.git
           name: suhasgaddam
