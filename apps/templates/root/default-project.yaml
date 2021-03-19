@@ -10,6 +10,8 @@ spec:
   destinations:
   - namespace: argo-cd
     server: https://kubernetes.default.svc
+  - namespace: proof-of-concept
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
