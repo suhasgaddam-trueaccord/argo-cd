@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Argo CD Default Project - DO NOT USE
+  destinations:
+  - namespace: argo-cd
+    server: https://kubernetes.default.svc
+  orphanedResources:
+    warn: true
