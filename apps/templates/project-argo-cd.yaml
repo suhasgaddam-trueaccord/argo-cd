@@ -11,6 +11,7 @@ spec:
 
   # Allow manifests to deploy from any Git repos
   sourceRepos:
+  - 'https://github.com/suhasgaddam-trueaccord/argo-cd.git'
   - 'https://argoproj.github.io/argo-helm'
   - 'https://dandydeveloper.github.io/charts'
 
