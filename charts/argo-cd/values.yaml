@@ -9,9 +9,7 @@ argo-cd:
   installCRDs: false
   configs:
     secret:
-# sgaddam@T0487 argoproj % export ARGO_PWD=admin
-# sgaddam@T0487 argoproj % htpasswd -nbBC 10 "" $ARGO_PWD | tr -d ':\n' | sed 's/$2y/$2a/'
-      argocdServerAdminPassword: '$2a$10$5X93MK/GdXQ6/TnpHj/lSesM.b6GOx1kF.dc02it8bQgvjigHfLRG'
+      argocdServerAdminPassword: '$2a$10$5X93MK/GdXQ6/TnpHj/lSesM.b6GOx1kF.dc02it8bQgvjigHfLRG' # sgaddam@T0487 argoproj % export ARGO_PWD=admin # sgaddam@T0487 argoproj % htpasswd -nbBC 10 "" $ARGO_PWD | tr -d ':\n' | sed 's/$2y/$2a/'
       createSecret: true
       githubSecret: super-duper
   controller:
