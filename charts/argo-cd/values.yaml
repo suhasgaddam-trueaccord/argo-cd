@@ -107,6 +107,18 @@ argo-cd:
     metrics:
       enabled: false
   redis-ha:
+    # local
+    affinity: |-
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: redis-ha
+                  release: argo-cd
+                  argo-cd-redis-ha: replica
+              topologyKey: kubernetes.io/hostname
     enabled: true
     exporter:
       enabled: false
@@ -116,7 +128,8 @@ argo-cd:
       enabled: true
       metrics:
         enabled: false
-      replicas: 1
+      replicas: 1 # local
+    hardAntiAffinity: false # local
     image:
       tag: 6.2.1-buster
     replicas: 2
