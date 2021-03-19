@@ -65,6 +65,20 @@ argo-cd:
       maxReplicas: 1
       targetCPUUtilizationPercentage: 50
       targetMemoryUtilizationPercentage: 50
+    configEnabled: true
+    config:
+      url: localhost:8080
+      application.instanceLabelKey: argocd.argoproj.io/instance
+      repositories: |-
+        - type: helm
+          url: https://argoproj.github.io/argo-helm
+          name: argo-cd
+        - type: helm
+          url: https://dandydeveloper.github.io/charts
+          name: dandydeveloper
+        - type: git
+          url: https://github.com/suhasgaddam-trueaccord/argo-cd.git
+          name: suhasgaddam
     ingress:
       enabled: false
       https: false
