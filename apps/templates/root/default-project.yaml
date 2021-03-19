@@ -10,5 +10,11 @@ spec:
   destinations:
   - namespace: argo-cd
     server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'    
   orphanedResources:
     warn: true
