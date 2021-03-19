@@ -11,7 +11,7 @@ spec:
     namespace: proof-of-concept
   project: proof-of-concept
   source:
-    path: bitnami/nginx
+    path: nginx
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 8.8.0
     helm:
