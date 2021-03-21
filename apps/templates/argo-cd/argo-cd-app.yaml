@@ -13,7 +13,7 @@ spec:
   source:
     path: charts/argo-cd
     repoURL: https://github.com/suhasgaddam-trueaccord/argo-cd.git
-    targetRevision: HEAD
+    targetRevision: qa01
   syncPolicy:
     automated:
       prune: true
