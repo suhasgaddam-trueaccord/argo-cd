@@ -5,6 +5,3 @@ metadata:
   name: argo-cd
   labels:
     name: argo-cd
-spec:
-  finalizers:
-  - kubernetes

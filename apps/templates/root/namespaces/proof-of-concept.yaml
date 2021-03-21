@@ -5,6 +5,3 @@ metadata:
   name: proof-of-concept
   labels:
     name: proof-of-concept
-spec:
-  finalizers:
-  - kubernetes
