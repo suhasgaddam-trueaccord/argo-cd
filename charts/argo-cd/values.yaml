@@ -87,10 +87,6 @@ argo-cd:
         - type: git
           url: https://github.com/suhasgaddam-trueaccord/argo-cd.git
           name: suhasgaddam
-        - type: helm
-          enableOCI: true
-          url: https://registry.eng.trueaccord.com/dev/sgaddam/helm
-          name: helm-dev
     ingress:
       enabled: false
       https: false
