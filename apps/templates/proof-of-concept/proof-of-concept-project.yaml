@@ -14,3 +14,7 @@ spec:
     server: https://kubernetes.default.svc
   orphanedResources:
     warn: true
+    ignore:
+    - group: "*"
+      kind: "Secret"
+      name: "istio.*"

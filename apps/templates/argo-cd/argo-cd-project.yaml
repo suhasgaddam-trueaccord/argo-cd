@@ -23,3 +23,7 @@ spec:
     kind: ClusterRole
   orphanedResources:
     warn: true
+    ignore:
+    - group: "*"
+      kind: "Secret"
+      name: "istio.*"
